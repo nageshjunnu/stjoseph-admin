@@ -21959,7 +21959,7 @@ body .main-header .navbar .nav > li.search-box > a:hover, body .main-header .nav
 
 /*treeview*/
 .treeview-menu {
-  display: none;
+  display: block !important;
   list-style: none;
   padding: 0;
   margin: 0; }
