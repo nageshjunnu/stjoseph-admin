@@ -32024,3 +32024,29 @@ img.away, img.busy, img.offline, img.online {
     transform: translate(0, 0);
   }
 }
+.table-container {
+  overflow: auto;
+  max-height: 400px; /* Adjust based on your needs */
+  border: 1px solid #ddd; /* Optional: Add border for better visibility */
+}
+
+.table-container table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-container th, .table-container td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.table-container th {
+  background-color: #f2f2f2;
+}
+
+.table-responsive {
+  overflow-x: auto;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+  height: 600px;
+}
