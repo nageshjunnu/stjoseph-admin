@@ -124,15 +124,17 @@ const LeftSide = () => {
                                     </Link>
                                 </li>
                             )}
+                             {hasPkey && (
+                                <>
                             <li>
-                                        {hasPkey && (
+                                       
                                             <Link href={`/students/view-profile`}>
                                                  <i className="icon-Layout-4-blocks">
                                             <span className="path1"></span>
                                             <span className="path2"></span>
                                         </i> View Profile
                                             </Link>
-                                        ) }
+                                      
                                     </li>
                                 <li className="1">
                                     <Link href="/knowYourAlumni">
@@ -146,7 +148,8 @@ const LeftSide = () => {
                                         </span>
                                     </Link>
                                 </li>
-                           
+                                </>
+                             ) }
                         </ul>
                     </div>
                 </div>

@@ -63,7 +63,7 @@ const Header = () => {
 						</Link>
 
 						</li>
-						<li className="btn-group nav-item d-none d-xl-inline-block">
+						{/* <li className="btn-group nav-item d-none d-xl-inline-block">
 							<Link href="contact_app_chat.html" className="waves-effect waves-light nav-link svg-bt-icon" title="Chat">
 								<i className="icon-Chat"><span className="path1"></span><span className="path2"></span></i>
 							</Link>
@@ -77,18 +77,18 @@ const Header = () => {
 							<Link href="extra_taskboard.html" className="waves-effect waves-light nav-link svg-bt-icon" title="Taskboard">
 								<i className="icon-Clipboard-check"><span className="path1"></span><span className="path2"></span><span className="path3"></span></i>
 							</Link>
-						</li>
+						</li> */}
 					</ul>
 				</div>
 
 				<div className="navbar-custom-menu r-side">
 					<ul className="nav navbar-nav">
-						<li className="btn-group nav-item d-lg-inline-flex d-none">
+						{/* <li className="btn-group nav-item d-lg-inline-flex d-none">
 							<Link href="#" data-provide="fullscreen" className="waves-effect waves-light nav-link full-screen" title="Full Screen">
 								<i className="icon-Expand-arrows"><span className="path1"></span><span className="path2"></span></i>
 							</Link>
-						</li>
-						<li className="btn-group d-lg-inline-flex d-none">
+						</li> */}
+						{/* <li className="btn-group d-lg-inline-flex d-none">
 							<div className="app-menu">
 								<div className="search-bx mx-5">
 									<form>
@@ -101,7 +101,7 @@ const Header = () => {
 									</form>
 								</div>
 							</div>
-						</li>
+						</li> */}
 						<li className="dropdown notifications-menu">
 							{/* <Link href="#" className="waves-effect waves-light dropdown-toggle" data-bs-toggle="dropdown" title="Notifications">
 								<i className="icon-Notifications"><span className="path1"></span><span className="path2"></span></i>

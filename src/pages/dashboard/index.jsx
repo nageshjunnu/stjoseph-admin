@@ -103,8 +103,8 @@ const Dashboard = () => {
     
             return (
                 <div className="col-lg-4 col-12" key={index}>
-                    <Link href="#" className={`box pull-up`} style={{ backgroundColor: color }}>
-                        <div className={`box-body`} style={{ backgroundColor: color }}>
+                    <Link href="/students" className={`box pull-up`} style={{ backgroundColor: color }}>
+                        <div className={`box-body box-body2`} style={{ backgroundColor: color }}>
                             <div className="d-flex align-items-center">
                                 <div className={`icon rounded-circle w-60 h-60 text-center l-h-80`}>
                                     <span className="fs-30 icon-Bulb1">

@@ -26986,6 +26986,12 @@ textarea.form-control {
   -ms-flex: 1 1 auto;
   flex: 1 1 auto;
   border-radius: 10px; 
+}
+.box-body2 {
+  padding: 1.5rem;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  border-radius: 10px; 
   color:#fff;
 }
   .box-body .box-title {
@@ -31989,7 +31995,7 @@ img.away, img.busy, img.offline, img.online {
   text-align: left;
 }
 
-.box-body p {
+.box-body2 p {
   color: #fff !important;
 }
 
