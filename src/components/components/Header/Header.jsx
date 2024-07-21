@@ -12,6 +12,31 @@ const Header = () => {
 			setHasPKey(false)
 		}
 	}, [])
+	const [isSidebarActive, setSidebarActive] = useState(false);
+
+    const toggleSidebar = () => {
+        setSidebarActive(!isSidebarActive);
+    };
+	const [studentId, setStudentId] = useState(null);
+    const [hasPkey, setHasPkey] = useState(false);
+    const [hasPermission, setHasPermission] = useState(null);
+    const [userId, setUserId] = useState(null);
+
+    useEffect(() => {
+        if (typeof window !== "undefined") {
+            const usersData = JSON.parse(localStorage.getItem("usersData"));
+            if (usersData) {
+                if (usersData.data.pkey) {
+                    setHasPkey(true);
+                    setStudentId(usersData.data.student_id);
+                }
+                if (usersData.data.permission) {
+                    setUserId(usersData.data.id);
+                    setHasPermission(usersData.data.permission);
+                }
+            }
+        }
+    }, []);
 	return (
 		<header className="main-header">
 			<div className="d-flex align-items-center logo-box justify-content-start">
@@ -29,9 +54,14 @@ const Header = () => {
 				<div className="app-menu">
 					<ul className="header-megamenu nav">
 						<li className="btn-group nav-item d-md-none">
-							<Link href="#" className="waves-effect waves-light nav-link push-btn" data-toggle="push-menu" role="button">
-								<span className="icon-Align-left"><span className="path1"></span><span className="path2"></span><span className="path3"></span></span>
-							</Link>
+						<Link href="#" className="waves-effect waves-light nav-link push-btn" onClick={toggleSidebar} role="button">
+							<span className="icon-Align-left">
+							<span className="path1"></span>
+							<span className="path2"></span>
+							<span className="path3"></span>
+							</span>
+						</Link>
+
 						</li>
 						<li className="btn-group nav-item d-none d-xl-inline-block">
 							<Link href="contact_app_chat.html" className="waves-effect waves-light nav-link svg-bt-icon" title="Chat">
@@ -73,9 +103,9 @@ const Header = () => {
 							</div>
 						</li>
 						<li className="dropdown notifications-menu">
-							<Link href="#" className="waves-effect waves-light dropdown-toggle" data-bs-toggle="dropdown" title="Notifications">
+							{/* <Link href="#" className="waves-effect waves-light dropdown-toggle" data-bs-toggle="dropdown" title="Notifications">
 								<i className="icon-Notifications"><span className="path1"></span><span className="path2"></span></i>
-							</Link>
+							</Link> */}
 							<ul className="dropdown-menu animated bounceIn">
 
 								{/* <li className="header">
@@ -113,7 +143,7 @@ const Header = () => {
 								{/* <i className="icon-User"><span className="path1"></span><span className="path2"></span></i> */}
 								<i className="ti-lock text-muted me-2"></i> 
 							</Link>
-							<ul className="dropdown-menu animated flipInX">
+							{/* <ul className="dropdown-menu animated flipInX">
 								<li className="user-body">
 
 									<Link className="dropdown-item" href="#"><i className="ti-user text-muted me-2"></i> Profile</Link>
@@ -128,18 +158,145 @@ const Header = () => {
 									<Link className="dropdown-item" href="/" onClick={() => { localStorage.clear() }}><i className="ti-lock text-muted me-2"></i> Logout</Link>
 								</li>
 
-							</ul>
+							</ul> */}
 						</li>
 
 						<li>
-							<Link href="#" data-toggle="control-sidebar" title="Setting" className="waves-effect waves-light">
+							{/* <Link href="#" data-toggle="control-sidebar" title="Setting" className="waves-effect waves-light">
 								<i className="icon-Settings"><span className="path1"></span><span className="path2"></span></i>
-							</Link>
+							</Link> */}
 						</li>
 
 					</ul>
 				</div>
 			</nav>
+			<aside className={`main-sidebar ${isSidebarActive ? 'active' : ''}`}>
+          <section className="sidebar position-relative">
+            <div className="multinav">
+              <div>
+                <ul className="sidebar-menu" data-widget="tree">
+                  <li className="header">Dashboard & Apps</li>
+                  <li>
+                    <Link href="/dashboard">
+                      <i className="icon-Layout-4-blocks">
+                        <span className="path1"></span>
+                        <span className="path2"></span>
+                      </i>
+                      <span>Dashboard</span>
+                    </Link>
+                  </li>
+                  {hasPermission && (
+                    <li className="treeview">
+                      <Link href="#">
+                        <i className="icon-Layout-4-blocks">
+                          <span className="path1"></span>
+                          <span className="path2"></span>
+                        </i>
+                        <span>Students</span>
+                        <span className="pull-right-container">
+                          <i className="fa fa-angle-right pull-right"></i>
+                        </span>
+                      </Link>
+                      <ul className="treeview-menu">
+                        <li>
+                          <Link href="/students">
+                            <i className="icon-Layout-4-blocks"></i> All Students
+                          </Link>
+                        </li>
+                        {hasPermission !== 'view' && (
+                          <li>
+                            <Link href="/students/new-student">
+                              <i className="icon-Layout-4-blocks"></i> New Student
+                            </Link>
+                          </li>
+                        )}
+                      </ul>
+                    </li>
+                  )}
+                  {hasPermission && (
+                    <li className="treeview">
+                      <Link href="#">
+                        <i className="icon-Layout-4-blocks">
+                          <span className="path1"></span>
+                          <span className="path2"></span>
+                        </i>
+                        <span>Users</span>
+                        <span className="pull-right-container">
+                          <i className="fa fa-angle-right pull-right"></i>
+                        </span>
+                      </Link>
+                      <ul className="treeview-menu">
+                        <li>
+                          <Link href={`/users/${userId}`}>
+                            <i className="icon-Layout-4-blocks"></i> View User
+                          </Link>
+                        </li>
+                        <li>
+                          <Link href="/users/new-user">
+                            <i className="icon-Layout-4-blocks"></i> Create User
+                          </Link>
+                        </li>
+                        {hasPermission === 'full access' && (
+                          <li>
+                            <Link href="/users">
+                              <i className="icon-Layout-4-blocks"></i> All Users
+                            </Link>
+                          </li>
+                        )}
+                      </ul>
+                    </li>
+                  )}
+                  {hasPermission && hasPermission !== 'view' && (
+                    <li className="treeview">
+                      <Link href="/contacts">
+                        <i className="icon-Layout-4-blocks">
+                          <span className="path1"></span>
+                          <span className="path2"></span>
+                        </i>
+                        <span>Contacts</span>
+                      </Link>
+                    </li>
+                  )}
+                  <li>
+                    {hasPkey && (
+                      <Link href={`/students/view-profile`}>
+                        <i className="icon-Layout-4-blocks">
+                          <span className="path1"></span>
+                          <span className="path2"></span>
+                        </i>
+                        View Profile
+                      </Link>
+                    )}
+                  </li>
+                  <li className="1">
+                    <Link href="/knowYourAlumni">
+                      <i className="icon-Layout-4-blocks">
+                        <span className="path1"></span>
+                        <span className="path2"></span>
+                      </i>
+                      <span>Know Your Alumni</span>
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </section>
+          <div className="sidebar-footer">
+            <Link href="#" className="link" title="Settings">
+              <span className="icon-Settings-2"></span>
+            </Link>
+            <Link href="mailbox.html" className="link" title="Email">
+              <span className="icon-Mail"></span>
+            </Link>
+            <Link href="/" className="link" title="Logout" onClick={() => { localStorage.clear(); }}>
+              <span className="icon-Lock-overturning">
+                <span className="path1"></span>
+                <span className="path2"></span>
+              </span>
+            </Link>
+          </div>
+        </aside>
+  
 		</header>
 	)
 }

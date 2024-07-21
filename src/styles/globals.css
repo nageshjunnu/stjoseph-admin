@@ -24307,7 +24307,9 @@ tfoot input {
   border-bottom-left-radius: 0;
   position: relative;
   overflow: hidden;
-  padding: 0; }
+  padding: 0; 
+  color:#fff;
+  }
 .direct-chat.chat-pane-open .direct-chat-contacts {
   -webkit-transform: translate(0, 0);
   -ms-transform: translate(0, 0);
@@ -26983,7 +26985,9 @@ textarea.form-control {
   padding: 1.5rem;
   -ms-flex: 1 1 auto;
   flex: 1 1 auto;
-  border-radius: 10px; }
+  border-radius: 10px; 
+  color:#fff;
+}
   .box-body .box-title {
     display: inline-block;
     margin: 0;
@@ -31983,4 +31987,34 @@ img.away, img.busy, img.offline, img.online {
 .table th {
   background-color: #f2f2f2;
   text-align: left;
+}
+
+.box-body p {
+  color: #fff !important;
+}
+
+/* Add this CSS to your stylesheet */
+
+/* Hide the sidebar by default on smaller screens */
+@media (max-width: 768px) {
+  .main-sidebar {
+    display: none;
+  }
+  .main-sidebar.active {
+    display: block;
+    position: absolute;
+    z-index: 999;
+    width: 250px;
+    background: #fff;
+  }
+  .main-sidebar {
+    margin-top: 145px;
+    padding-top: 0px;
+    transform: translate(-270px, 0);
+    transition: transform 0.3s ease;
+  }
+  
+  .main-sidebar.active {
+    transform: translate(0, 0);
+  }
 }

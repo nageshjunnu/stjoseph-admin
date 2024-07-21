@@ -93,19 +93,18 @@ const Dashboard = () => {
     }, []);
     const renderDegreeItems = () => {
         if (!studentData) return null; // Return null if data is not fetched yet
+    
         const colors = [
-            'bg-primary-light', 'bg-secondary-light', 'bg-success-light',
-            'bg-info-light', 'bg-warning-light', 'bg-danger-light',
-            'bg-dark-light', 'bg-light-light'
+            '#4accdb', '#2ab42a', '#ec5020', '#db4ac3', '#604adb'
         ];
     
-        return studentData.category_counts.map((degree, index) => {
-            const randomColor = colors[Math.floor(Math.random() * colors.length)]; // Select a random color
+        return studentData.category_counts.slice(0, 5).map((degree, index) => {
+            const color = colors[index]; // Get the fixed color for the index
     
             return (
-                <div className="col-lg-4 col-12" key={index} >
-                    <Link href="#" className={`box pull-up ${randomColor}`}>
-                        <div className={`box-body ${randomColor}`}>
+                <div className="col-lg-4 col-12" key={index}>
+                    <Link href="#" className={`box pull-up`} style={{ backgroundColor: color }}>
+                        <div className={`box-body`} style={{ backgroundColor: color }}>
                             <div className="d-flex align-items-center">
                                 <div className={`icon rounded-circle w-60 h-60 text-center l-h-80`}>
                                     <span className="fs-30 icon-Bulb1">
@@ -129,7 +128,15 @@ const Dashboard = () => {
     
     
     
+    
     if (!studentData) return null;
+    const colors = [
+        '#4accdb', '#2ab42a', '#ec5020', '#db4ac3', '#604adb'
+    ];
+    
+    // Ensure the colors array covers all degrees if there are more than 5
+    const barColors = studentData.category_counts.map((_, index) => colors[index % colors.length]);
+    
     const data = {
         labels: studentData.category_counts.map(degree => degree.degree),
         datasets: [
@@ -137,18 +144,16 @@ const Dashboard = () => {
                 label: 'Degree Count',
                 data: studentData.category_counts.map(degree => degree.count),
                 fill: false,
-                backgroundColor: 'rgba(75,192,192,0.4)',
+                backgroundColor: barColors,
                 borderColor: 'rgba(75,192,192,1)',
                 tension: 0.1,
                 borderWidth: 1,
                 barThickness: 20, // Set the bar thickness here
                 maxBarThickness: 20 // Maximum bar thickness
-                
-                
             }
         ]
     };
-
+    
     const options = {
         scales: {
             x: {
@@ -181,7 +186,7 @@ const Dashboard = () => {
                                 <div className="col-xl-8">
                                     <div className="box no-shadow mb-0 bg-transparent">
                                         <div className="box-header no-border px-0">
-                                            <h4 className="box-title">Your Courses</h4>
+                                            <h4 className="box-title">Statistics</h4>
                                             <div className="box-controls pull-right d-md-flex d-none">
                                                 <Link href="#">View All</Link>
                                             </div>
@@ -205,113 +210,7 @@ const Dashboard = () => {
                                             <Bar data={data} options={options} />
                                         </div>
                                     </div>
-                                    <div className="row">
-
-                                        <div className="col-lg-6 col-12">
-                                            <div className="box">
-                                                <div className="box-header">
-                                                    <h4 className="box-title">New Activity</h4>
-                                                </div>
-                                                <div className="box-body">
-                                                    <div className="act-div">
-                                                        <div className="bg-gray-100 p-15 rounded10 mb-20">
-                                                            <div>
-                                                                <span className="badge badge-sm badge-dot badge-warning me-5"></span>
-                                                                Fuzzy Logic
-                                                            </div>
-                                                            <h4 className="my-20">Dont forget to submit the task!</h4>
-                                                            <div className="d-flex align-items-center justify-content-between">
-                                                                <div className="d-flex align-items-center">
-                                                                    <img src="/assets/images/avatar/1.jpg" className="avatar avatar-sm me-10 avatar-pill" />
-                                                                    <p className="text-fade fs-12 mb-0">Johen doe</p>
-                                                                </div>
-                                                                <p className="text-fade fs-12 mb-0">08 Nov 2020</p>
-                                                            </div>
-                                                        </div>
-                                                        <div className="bg-gray-100 p-15 rounded10 mb-20">
-                                                            <div>
-                                                                <span className="badge badge-sm badge-dot badge-primary me-5"></span>
-                                                                Biometric
-                                                            </div>
-                                                            <h4 className="my-20">Explain what do you know about<br /> Biometric! (&gt;100 words)</h4>
-                                                            <div className="d-flex align-items-center justify-content-between">
-                                                                <div className="d-flex align-items-center">
-                                                                    <img src="/assets/images/avatar/2.jpg" className="avatar avatar-sm me-10 avatar-pill" />
-                                                                    <p className="text-fade fs-12 mb-0">Mical doe</p>
-                                                                </div>
-                                                                <p className="text-fade fs-12 mb-0">08 Nov 2020</p>
-                                                            </div>
-                                                        </div>
-                                                        <div className="bg-gray-100 p-15 rounded10 mb-20">
-                                                            <div>
-                                                                <span className="badge badge-sm badge-dot badge-warning me-5"></span>
-                                                                Fuzzy Logic
-                                                            </div>
-                                                            <h4 className="my-20">Dont forget to submit the task!</h4>
-                                                            <div className="d-flex align-items-center justify-content-between">
-                                                                <div className="d-flex align-items-center">
-                                                                    <img src="/assets/images/avatar/1.jpg" className="avatar avatar-sm me-10 avatar-pill" />
-                                                                    <p className="text-fade fs-12 mb-0">Johen doe</p>
-                                                                </div>
-                                                                <p className="text-fade fs-12 mb-0">08 Nov 2020</p>
-                                                            </div>
-                                                        </div>
-                                                        <div className="bg-gray-100 p-15 rounded10">
-                                                            <div>
-                                                                <span className="badge badge-sm badge-dot badge-primary me-5"></span>
-                                                                Biometric
-                                                            </div>
-                                                            <h4 className="my-20">Explain what do you know about Biometric! (&gt;100 words)</h4>
-                                                            <div className="d-flex align-items-center justify-content-between">
-                                                                <div className="d-flex align-items-center">
-                                                                    <img src="/assets/images/avatar/2.jpg" className="avatar avatar-sm me-10 avatar-pill" />
-                                                                    <p className="text-fade fs-12 mb-0">Mical doe</p>
-                                                                </div>
-                                                                <p className="text-fade fs-12 mb-0">08 Nov 2020</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div className="box-footer text-center p-0">
-                                                    <Link href="#" className="btn d-grid btn-primary-light">View all</Link>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="col-lg-6">
-                                            <div className="box">
-                                                <div className="box-header">
-                                                    <h4 className="box-title">Statisics</h4>
-                                                </div>
-                                                <div className="box-body">
-                                                    <h3 className="mt-0">24hr</h3>
-                                                    <p className="text-fade fs-12">Hours Spend last week</p>
-                                                    <div id="charts_widget_2_chart"></div>
-                                                </div>
-                                            </div>
-                                            <div className="row">
-                                                <div className="col-6">
-                                                    <Link className="box box-link-shadow text-center pull-up" href="javascript:void(0)">
-                                                        <div className="box-body py-25 bg-info-light px-5">
-                                                            <p className="fw-600 text-info">Courses in Progress</p>
-                                                        </div>
-                                                        <div className="box-body">
-                                                            <h1 className="countnm fs-50 m-0">5</h1>
-                                                        </div>
-                                                    </Link>
-                                                </div>
-                                                <div className="col-6">
-                                                    <Link className="box box-link-shadow text-center pull-up" href="javascript:void(0)">
-                                                        <div className="box-body py-25 bg-info-light px-5">
-                                                            <p className="fw-600 text-info">Forum Discussion</p>
-                                                        </div>
-                                                        <div className="box-body">
-                                                            <h1 className="countnm fs-50 m-0">25</h1>
-                                                        </div>
-                                                    </Link>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    
 
                                 </div>
                                 {
