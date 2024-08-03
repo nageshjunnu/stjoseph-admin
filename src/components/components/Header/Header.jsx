@@ -137,28 +137,23 @@ const Header = () => {
 								</li>
 							</ul>
 						</li>
+<li className="dropdown user user-menu">
+							<Link href={`/users/${userId}`} className="waves-effect waves-light dropdown-toggle" data-bs-toggle="dropdown" title="User">
+								<i className="ti-user text-muted me-2"/>
+							</Link>
 
+						</li>
+            <li className="dropdown user user-menu">
+							<Link href="/loginProfile" className="waves-effect waves-light dropdown-toggle" data-bs-toggle="dropdown" title="User">
+								<i className="ti-settings text-muted me-2"/>
+							</Link>
+
+						</li>
 						<li className="dropdown user user-menu">
 							<Link href="/" onClick={() => { localStorage.clear() }} className="waves-effect waves-light dropdown-toggle" data-bs-toggle="dropdown" title="User">
-								{/* <i className="icon-User"><span className="path1"></span><span className="path2"></span></i> */}
 								<i className="ti-lock text-muted me-2"></i> 
 							</Link>
-							{/* <ul className="dropdown-menu animated flipInX">
-								<li className="user-body">
 
-									<Link className="dropdown-item" href="#"><i className="ti-user text-muted me-2"></i> Profile</Link>
-
-									{
-										hasPKey && (
-											<Link className="dropdown-item" href="/loginProfile"><i className="ti-lock text-muted me-2"></i> Change Password</Link>
-										)
-									}
-									<Link className="dropdown-item" href="#"><i className="ti-settings text-muted me-2"></i> Settings</Link>
-									<div className="dropdown-divider"></div>
-									<Link className="dropdown-item" href="/" onClick={() => { localStorage.clear() }}><i className="ti-lock text-muted me-2"></i> Logout</Link>
-								</li>
-
-							</ul> */}
 						</li>
 
 						<li>

@@ -18,8 +18,8 @@ const ChangePassword = () => {
     const hashedCurrentPassword = md5(currentPassword);
 
     if (hashedCurrentPassword !== md5(storedPassword)) {
-        console.log(hashedCurrentPassword)
-        console.log(storedPassword)
+      console.log(hashedCurrentPassword)
+      console.log(storedPassword)
       setError('Current password is incorrect.');
       return;
     }
@@ -41,22 +41,27 @@ const ChangePassword = () => {
         'Content-Type': 'application/json',
       },
     })
-    .then(response => {
-      setSuccessMessage('Password changed successfully!');
-      // Additional logic can be added here based on the API response
-    })
-    .catch(error => {
-      setError('Failed to change password. Please try again.');
-      console.error('Error:', error);
-    });
+      .then(response => {
+        setSuccessMessage('Password changed successfully!');
+        // Additional logic can be added here based on the API response
+      })
+      .catch(error => {
+        setError('Failed to change password. Please try again.');
+        console.error('Error:', error);
+      });
   };
 
   return (
     <div className="content-wrapper">
       <div className="container-full">
+        <div className="box-tools float-end reset">
+          <a href='/' onClick={() => { localStorage.clear(); }} className="btn btn-primary btn-sm me-2">Reset Password</a>
+        </div>
         <div className="content-header">
           <h3 className="page-title">Change Password</h3>
+          
         </div>
+        
         <section className="content">
           <div className="card">
             <div className="card-body">
