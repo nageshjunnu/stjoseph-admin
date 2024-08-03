@@ -74,22 +74,19 @@ const KnowYourAlumni = () => {
     const dataToExport = filteredStudents.length > 0 ? filteredStudents : students;
     const doc = new jsPDF();
     doc.autoTable({
-      head: [['Photo', 'Student ID', 'Name', 'Gender', 'Batch Start', 'Batch End', 'Degree', 'Mobile', 'Email', 'Company', 'Roles', 'Institution', 'Industries', 'Address', 'Program', 'Roll Number']],
+      head: [[ 'Student ID', 'Name', 'Gender', 'Batch Start', 'Batch End', 'Degree', 'Email', 'Company', 'Roles', 'Institution', 'Industries', 'Program', 'Roll Number']],
       body: dataToExport.map(student => [
-        student.photo,
         student.student_id,
         student.name,
         student.gender,
         student.batchstart,
         student.batchend,
         student.degree,
-        student.mobile,
         student.email,
         student.company,
         student.roles,
         student.institution,
         student.industries,
-        `${student.address}, ${student.city}, ${student.state}, ${student.pincode}`,
         student.program,
         student.roll_number
       ])
@@ -188,20 +185,17 @@ const KnowYourAlumni = () => {
                       <table className="table table-bordered table-striped table-hover">
                         <thead className="sticky-top">
                           <tr>
-                            <th>Photo</th>
                             <th>Student ID</th>
                             <th>Name</th>
                             <th>Gender</th>
                             <th>Batch Start</th>
                             <th>Batch End</th>
                             <th>Degree</th>
-                            <th>Mobile</th>
                             <th>Email</th>
                             <th>Company</th>
                             <th>Roles</th>
                             <th>Institution</th>
                             <th>Industries</th>
-                            <th>Address</th>
                             <th>Program</th>
                             <th>Roll Number</th>
                           </tr>
@@ -209,22 +203,17 @@ const KnowYourAlumni = () => {
                         <tbody>
                           {paginatedStudents.map(student => (
                             <tr key={student.student_id} onClick={() => handleRowClick(student.student_id)}>
-                              <td>
-                                <Image className="img-fluid" src={student.photo ? `https://kyroes.in/st-josephs/controllers/uploads/${student.photo}` : "/../images/avatar/375x200/2.jpg"} height={50} width={50} alt={student.name} />
-                              </td>
                               <td>{student.student_id}</td>
                               <td>{student.name}</td>
                               <td>{student.gender}</td>
                               <td>{student.batchstart}</td>
                               <td>{student.batchend}</td>
                               <td>{student.degree}</td>
-                              <td>{student.mobile}</td>
                               <td>{student.email}</td>
                               <td>{student.company}</td>
                               <td>{student.roles}</td>
                               <td>{student.institution}</td>
                               <td>{student.industries}</td>
-                              <td>{`${student.address}, ${student.city}, ${student.state}, ${student.pincode}`}</td>
                               <td>{student.program}</td>
                               <td>{student.roll_number}</td>
                             </tr>

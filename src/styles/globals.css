@@ -31691,7 +31691,7 @@ button.btn.dropdown-toggle:after {
 
 .card-columns .card {
   margin-bottom: 1.5rem; }
-@media (min-width: 576px) {
+/* @media (min-width: 576px) {
   .card-columns {
     column-count: 3;
     column-gap: calc($default-gutter-width / 2);
@@ -31699,7 +31699,7 @@ button.btn.dropdown-toggle:after {
     widows: 1; }
     .card-columns .card {
       display: inline-block;
-      width: 100%; } }
+      width: 100%; } } */
 
 .box .dataTables_wrapper {
   padding-left: 0;
@@ -32049,4 +32049,10 @@ img.away, img.busy, img.offline, img.online {
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
   height: 600px;
+}
+@media (max-width: 767px) {
+  .content-wrapper {
+      margin-left: 0;
+      margin-top: 35px;
+  }
 }
