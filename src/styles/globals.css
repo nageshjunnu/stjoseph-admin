@@ -32056,3 +32056,7 @@ img.away, img.busy, img.offline, img.online {
       margin-top: 35px;
   }
 }
+.reset{
+  z-index: 999;
+  position: relative;
+}

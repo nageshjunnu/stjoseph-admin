@@ -235,7 +235,7 @@ const LoginForm = () => {
                             </div>
                             <div className="col-6">
                               <div className="fog-pwd text-end">
-                                <a href="javascript:void(0)" className="hover-warning" onClick={handlePasswordRecovery}><i className="ion ion-locked"></i> Forgot pwd?</a><br />
+                                <a href="javascript:void(0)" className="hover-warning" onClick={handlePasswordRecovery}><i className="ion ion-locked"></i> Forgot Password?</a><br />
                               </div>
                             </div>
                             <div className="col-12 text-center">
